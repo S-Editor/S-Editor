@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart File Upload (IPFS)</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+      function sizers() {
+        var xr=0;
+          for(var i=0;i<filepicker.files.length;i++){
+            xr=xr+filepicker.files[i].size;
+          }
+          window.xr=(xr /1000).toFixed(2);
+          return;
+        }
+    </script>
+    <script type="module" crossorigin src="assets/js/script.js"></script>
+    <link rel="modulepreload" href="assets/js//vendor.js">
+  </head>
+  <body>
+    <form id="upload-form">
+      <center>
+      <h2>Smart File Upload (IPFS)</h2>
+      <hr>
+      <input type="hidden" id="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEU0ZUU3NTY1REY2RTM2NTY3OGUxOWViYkNEYzNBZkUxNjYwYzJjZDEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2MzQ0ODk4NzQwMjAsIm5hbWUiOiJXMyJ9.G8boXSIxDTrtMIoy97-eXplRWrcrJ8C_mZpE8cXkeWI" required />
+      <input type="file" multiple="multiple" id="filepicker" name="fileList" required /><br>
+      <ul id="output" type="dot"></ul>
+      <input type="submit" value="Submit" id="submit" />
+      </center>
+    </form>
+  </body>
+</html>

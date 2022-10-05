@@ -1,0 +1,8 @@
+<svg height="50%" width="50%" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <def><style>polygon, rect{filter: drop-shadow(10px 10px 5px #aaa)}</style></def>
+  <polygon points="50,450 200,230 280,230 130,450 280,670 200,670" fill="#09f" stroke="#09f" stroke-width="20" />
+  <polygon points="950,450 800,230 720,230 870,450 720,670 800,670" fill="#09f" stroke="#09f" stroke-width="20" />
+  <rect x="200" y="30" height="100" width="600" fill="#09f" rx="50" stroke="#09f" stroke-width="20" />
+  <rect x="450" y="30" height="740" width="100" fill="#09f" rx="50" stroke="#09f" stroke-width="20" />
+  <line x1="250" y1="90" x2="600" y2="90" stroke="#09f" stroke-width="100" />
+</svg>

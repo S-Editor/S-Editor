@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>TDIM Logo</title>
+    <style>
+      .L-loader{
+        background:#fff;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100%;
+        width:100vw;
+        position:fixed;
+        top:0;
+        left:0;
+      }
+      .L-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ddd;
+        border-bottom: 5px solid #09f;
+        padding: 5px 10px;
+      }
+      .L-logo div {
+        display: inline-block;
+      }
+      .L-logo div,
+      .L-logo span {
+        display: block;
+      }
+      .L-logo div img {
+        width: 15rem;
+        height: 15rem;
+      }
+      .L-logo div b {
+        font: bold 80px Sans-Serf;
+        color: #09f;
+      }
+      @media (max-width: 500px) {
+        .L-logo div b {
+          display: none;
+        }
+      }
+      .load {
+        height: 9px;
+        width: 20rem;
+        display: flex;
+        margin-top: 5px;
+        overflow: hidden;
+        border: 1px solid #09f;
+        border-radius: 10px;
+      }
+      .load .load-box {
+        width: 120px;
+        height: 10px;
+        border-radius: 10px;
+        background: #09f;
+        animation: loader 1s linear 0ms infinite;
+      }
+      @keyframes loader {
+        0% {
+          transform: translateX(-6rem);
+        }
+        50% {
+          width: 40px;
+        }
+        100% {
+          transform: translateX(22rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <center class="L-loader">
+      <section>
+      <div class="L-logo">
+        <div>
+          <img src="./favicon.ico" />
+        </div>
+        <div>
+          <b style="margin-left: -40px;">TDIM</b>
+          <br />
+          <b>Editor</b>
+        </div>
+      </div>
+      <div class="load">
+        <span class="load-box"></span>
+      </div>
+      </section>
+    </center>
+    tefhjji88
+    <script>
+    window.onload = document.querySelector(".L-loader").style.display="none";
+      console.log(window.onload)
+    </script>
+  </body>
+</html>

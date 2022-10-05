@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    :root{
+      --theme: #fff;
+    }
+body,html{
+  height:100%;
+  width:100%;
+  margin:0;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
+  justify-content:center;
+  background: var(--theme);
+}
+#gradient{
+  min-height:350px;
+  min-width:280px;
+  font:sans-serif;
+  text-align:center;
+  background-image:radial-gradient(#fff,#09f);
+  padding:35px 10px;
+  border-radius:10px;
+  box-shadow:
+  0 0 15px 3px #00000033;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+[type="button"]{
+  background-color:#ff5000;
+  border:1px solid #fff;
+  color:#fff;
+  text-align:center;
+  font-size:1em;
+  height:40px;
+  width:100px;
+  border-radius:10px;
+  border:0;
+  box-shadow:0 0 10px 2px rgba(0,0,0,0.3);
+  outline:0;
+  padding:2.5px 5px;
+}
+[type="button"]:active{
+  box-shadow:0 0 0 3px rgba(255,255,255,0.3);
+}
+#nh1,#nh2{width:117.5px}
+[type="text"]{
+  width:250px;
+  height:30px;
+  margin:5px 0;
+  border-radius:10px;
+  border:0;
+  box-shadow:0 0 10px 2px rgba(0,0,0,0.3);
+  outline:0;
+  padding:2.5px 5px;
+}
+[type="text"]:focus{
+  box-shadow:0 0 0 3px rgba(255,255,255,0.3);
+}
+label,h3{
+color:#fff;
+}
+
+  </style>
+  </head>
+  <body>
+    <div id="gradient">
+      <div class=buttonsWrapper>
+        <h3>CSS3 Gradient Generator</h3>
+        <input name="kind" type=radio id="radial">
+        <label for=radial>radial</label>
+        <input name="kind" checked type=radio id="linear">
+        <label for=linear>linear</label>
+        <br>
+        <input type="text" id="place" placeholder="ex: to top,">
+        <br>
+        <input type="text" id="nh1" value="#ff0000" placeholder="required">
+        <input type="text" id="nh2" value="#00ff00" placeholder="required">
+        <br>
+        <input type="text" id="color" placeholder="ex: ,red">
+        <br>
+        <input type="text" placeholder="output" id=out readonly onclick="copy(this)">
+        <br>
+        <input onclick="rand();run();" type=button class=button value="Generate">
+        <input onclick="run()" type=button class=button value="Apply">
+      </div>
+      </div>
+    <script>
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.querySelector(':root').style.setProperty('--theme', '#444');
+} else {
+  document.querySelector(':root').style.setProperty('--theme', '#fff');
+}
+function copy(input){
+  input.select();
+  document.execCommand('copy');
+}
+
+function rand() {
+window.nh1.value = '#'+(Math.random().toString(16)+"000000").substring(2,8);
+window.nh2.value = '#'+(Math.random().toString(16)+"000000").substring(2,8);
+//console.log(x + " - " + y);
+}
+
+function run(){
+  
+  if(linear.checked==true){
+    var cool="linear-gradient("+window.place.value+window.nh1.value+","+window.nh2.value+window.color.value+")";
+    window.gradient.style.background=cool;
+    window.out.value=cool;
+  }
+  if(radial.checked==true){
+    var cool="radial-gradient("+window.place.value+window.nh1.value+","+window.nh2.value+window.color.value+")";
+    window.gradient.style.background=cool;
+    window.out.value=cool;
+  }
+  
+  }
+  rand();run();
+    </script> 
+  </body>
+</html>

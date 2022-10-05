@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --theme: #fff;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/assets/css/fonts/Cairo.ttf");
+}
+html, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
+  background: var(--theme);
+  font-family: "Cairo" !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  min-width: 320px;
+  width:60vw;
+  max-width:80vw !important;
+  height:70vh;
+  background:var(--theme);
+  box-shadow:0 0 15px 3px #00000033;
+  border-radius: 10px;
+}
+.container div input{
+  margin: 10px 5px;
+}
+#editor{
+  width: 90%;
+  height: calc(100% - 95px);
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px #00000033;
+}
+.container button{
+  box-shadow: 0 0 5px 1px #00000033;
+  width: 100px;
+  height:40px;
+  margin: 10px;
+  color: #09f;
+  background: var(--theme);
+  border: 1px solid #09f;
+  border-radius: 10px;
+}
+.container button:active{
+  background: #09f;
+  color: #fff;
+}

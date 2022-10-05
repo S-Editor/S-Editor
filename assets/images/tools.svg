@@ -1,0 +1,7 @@
+<svg height="500" width="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <title>TDIM Editor's tools icon</title>
+  <rect x="55" y="55" height="175" width="175" fill="#09f" rx="20" />
+  <rect x="270" y="55" height="175" width="175" fill="#09f" rx="20" />
+  <rect x="55" y="270" height="175" width="175" fill="#09f" rx="20" />
+  <rect x="270" y="270" height="175" width="175" fill="#09f" rx="20" />
+</svg>

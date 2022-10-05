@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Editor Beta</title>
+  <link rel="stylesheet" href="./assets/css/core.css" />
+  <link rel="stylesheet" href="./assets/css/core.small.css" media="(max-width:800px)" />
+  <link rel="icon shortcut" href="./favicon.ico" />
+  <link rel="manifest" href="assets/js/pwa/manifest.json" />
+  <link rel="stylesheet" href="./assets/fonts/FontAwesome/FontAwesome.css" />
+  <link rel="stylesheet" href="./assets/tools/pcr/monolith.min.css" type="text/css" media="all" />
+  <script src="./assets/plugins/tdimjs.main.js"></script>
+  <script>
+  if(!location.href.includes("localhost")){
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    };}
+  </script>
+</head>
+<body>
+  <app class="containered">
+    
+    <center class="L-loader">
+      <section>
+        <div class="L-logo">
+          <div class="big-logo">
+            <img src="./assets/images/favicon.svg" />
+          </div>
+          <div class="big-logo">
+            <b style="margin-left: -40px;">Smart</b>
+            <br />
+            <b>Editor</b>
+          </div>
+          <svg class="small-logo" width="100%" height="100%" viewBox="5 5 390 350" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="360" fill="none" stroke="#09f" stroke-width="5" />
+            <polyline points="70,340 20,340 20,20 380,20 380,340 330,340" stroke="#09f" stroke-width="20" fill="none" />
+            <text x="65" y="350" fill="#09f" style="font-size:50">Smart Editor</text>
+            <image x="50" y="50" height="260" width="300" xlink:href="./assets/images/favicon.svg" />
+            <rect height="20" width="300" x="50" y="370" fill="none" stroke="#09f" stroke-width="5" />
+          </svg>
+        </div>
+        <div class="load">
+          <span class="load-box"></span>
+        </div>
+      </section>
+    </center>
+    
+    <header class="head" id="head">
+      <div class="tab-scrool">
+        <div class="tab html" onclick="run(this);inSelect(html,'index.html')">
+          <img class="tab-icon" src="./assets/images/html.svg" title="Write HTML code" />
+        </div>
+        <hr />
+        <div class="tab css" onclick="run(this);inSelect(css,'style.css')">
+          <img class="tab-icon" src="./assets/images/css.svg" title="Write CSS code" />
+        </div>
+        <hr />
+        <div class="tab js" onclick="run(this);inSelect(js,'script.js')">
+          <img class="tab-icon" src="./assets/images/js.svg" title="Write Javascript code" />
+        </div>
+        <hr />
+        <div class="tab play" onclick="run(this);playCode()">
+          <img class="tab-icon" src="./assets/images/play.png" title="Show code Preview" />
+        </div>
+        <hr />
+        <div class="tab tools" onclick="run(this);">
+          <img class="tab-icon" src="./assets/images/tools.svg" title="Web Tools" />
+        </div>
+        <div class="tab settings" onclick="run(this);">
+          <img class="tab-icon" src="./assets/images/settings.svg" title="Editor Options" />
+        </div>
+        <div class="tab full" id="full2" onclick="full()"><img src="./assets/images/full.svg" /></div>
+      </div>
+    </header>
+    
+    <section class="contents" style="overflow: hidden;">
+      <div id="full">
+        <img src="./assets/images/full.svg" onclick="full()" />
+        <img src="./assets/images/play.png" onclick="playCode(true)" />
+      </div>
+      <div class="content coder" id="html"></div>
+      <div class="content coder" id="css"></div>
+      <div class="content coder" id="js"></div>
+      <iframe class="content" id="tools" src="./assets/tools/index.html"></iframe>
+      <iframe class="content" id="play" src="about:blank"></iframe>
+      <center class="content" id="settings">
+        <section>
+          <h2>Smart Editor Options</h2>
+          <hr>
+          <h3>Head</h3>
+          <p>Add here meta tags, title, stylesheets or scripts.</p>
+          <section id="headEditor"></section>
+          <hr>
+          <h3>Preview Mode</h3>
+          <p>Chose which console(s) or mode you need to use it in the code preview mode.</p>
+          <div class="box">
+            <div>
+              <span>
+                <h4>Eruda Console</h4>
+                <p>A multiple tab console that can help you to inspect elements and many Snippets.</p>
+              </span>
+              <input id="erudaConsole" type="checkbox" checked />
+            </div>
+            <hr style="margin:10px 0 -10px 0">
+            <div>
+              <span>
+                <h4>DOM Console</h4>
+                <p>A stong Dom Console to show all attributes available in an object you log it by console.log() function.</p>
+              </span>
+              <input id="domConsole" type="checkbox" />
+            </div>
+            <hr style="margin:10px 0 -10px 0">
+            <div>
+              <span>
+                <h4>Markdown</h4>
+                <p>Enable Markdown code preview support</p>
+              </span>
+              <input id="markdownEnable" type="checkbox" />
+            </div>
+          </div>
+          <hr>
+          <h3>Save As Project</h3>
+          <p>Save codes as a project in your browser storage and restore it anytime.</p>
+          <div class="box">
+            <div>
+              <span>
+                <h4>Enter a name for your project.</h4>
+              </span>
+              <input id="ghk" type="text" placeholder="Name" required />
+            </div>
+            <hr style="margin:10px 0 -10px 0">
+            <div class="last-box">
+              <span>
+                <h4>Select your project.</h4>
+              </span>
+              <select type="text" id="te" style="min-width:153px" required>
+                <option value="false">Select</option>
+              </select>
+            </div>
+            <hr style="margin:10px 0 -10px 0">
+            <div class="last-box">
+              <span>
+                <h4>Restore, Delete or Save your project.</h4>
+              </span>
+              <input type="button" onclick="penManager('restore')" value="Restore" />
+              <input type="button" onclick="penManager('remove')" value="Delete" />
+              <input type="submit" onclick="penManager('save')" value="Save" />
+            </div>
+          </div>
+          <hr>
+          <h3>As one template</h3>
+          <p>Raw or Download all codes from all editor tabs only in one template file.</p>
+          <div class="box">
+            <div>
+              <span>
+                <h4>Raw all codes in one template.</h4>
+              </span>
+              <input type="button" value="Raw" onclick="raw('oneTemplate')" />
+            </div>
+            <hr style="margin:10px 0 -10px 0">
+            <div class="last-box">
+              <span>
+                <h4>Download all codes in one template.</h4>
+                <p>Please, enter the file's name then click Download.</p>
+              </span>
+              <input id="fnameTemplate" type="text" placeholder="index.html" />
+              <input type="button" value="Download" onclick="dFile('oneTemplate',window.fnameTemplate.value)" />
+            </div>
+          </div>
+          <hr>
+          <h3>About</h3>
+          <span>Smart Editor Beta Version - Designed with &#10084; by
+            <a href="https://tdimmax.github.io" style="text-decoration:none;color:#09f;">TDIM Developer</a>.
+            <hr>All &copy; Right Saved 2021.
+          </span>
+        </section>
+      </center>
+      <div id="insDiv">
+        <div id="inserts">
+          <span class="fas fa-list" onclick="toggleInserter()"></span>
+          <label>
+            <span doMa class="fas fa-file"></span>
+            <input type="file" style="display: none;" onchange="read64(this)" />
+          </label>
+          <span class="fas fa-save" onclick='storage("save")'></span>
+          <span class="fas fa-trash" onclick='storage("clear")'></span>
+          <span class="fas fa-redo-alt" onclick="cIn.redo()"></span>
+          <span class="fas fa-undo-alt" onclick="cIn.undo()"></span>
+          <span>
+            <input type="button" value=" " onclick="cIn.focus()" class="pickr" />
+          </span>
+          <span onclick="mumdcucd('0');">M+</span>
+          <span onclick="mumdcucd('1');">M-</span>
+          <span onclick="mumdcucd('2');">C+</span>
+          <span onclick="mumdcucd('3');">C-</span>
+          <span class="fa fa-square" style="background:url(./assets/images/tidy.svg);color:transparent" onclick="cIn.setValue(tidy(cIn.getValue()));">
+          </span>
+          <span class="fa fa-code" onclick="raw(cIn.getValue());"></span>
+          <input id="fname" value="index.html" placeholder="File Name" />
+          <span class="fa fa-download" onclick="dFile(cIn.getValue(),window.fname.value);"></span>
+          <br />
+          <span onclick="insert('<')">&lt;</span>
+          <span onclick="insert('>')">></span>
+          <span onclick="insert(this.innerHTML)">{</span>
+          <span onclick="insert(this.innerHTML)">}</span>
+          <span onclick="insert(this.innerHTML)">(</span>
+          <span onclick="insert(this.innerHTML)">)</span>
+          <span onclick="insert(this.innerHTML)">\</span>
+          <span onclick="insert(this.innerHTML)">|</span>
+          <span onclick="insert(this.innerHTML)">+</span>
+          <span onclick="insert(this.innerHTML)">=</span>
+          <span onclick="insert(this.innerHTML)">/</span>
+          <span onclick="insert('&')">&</span>
+          <span onclick="insert(this.innerHTML)">_</span>
+          <span onclick="insert(this.innerHTML)">[</span>
+          <span onclick="insert(this.innerHTML)">]</span>
+          <span onclick="insert(this.innerHTML)">@</span>
+          <span onclick="insert(this.innerHTML)">#</span>
+          <span onclick="insert(this.innerHTML)">$</span>
+          <span onclick="insert(this.innerHTML)">%</span>
+          <span onclick="insert(this.innerHTML)">^</span>
+          <span onclick="insert(this.innerHTML)">*</span>
+          <span onclick="insert(this.innerHTML)">-</span>
+          <span onclick="insert(this.innerHTML)">'</span>
+          <span onclick="insert(this.innerHTML)">"</span>
+          <span onclick="insert(this.innerHTML)">:</span>
+          <span onclick="insert(this.innerHTML)">;</span>
+          <span onclick="insert(this.innerHTML)">!</span>
+          <span onclick="insert(this.innerHTML)">?</span>
+          <span onclick="insert(this.innerHTML)">,</span>
+          <span onclick="insert(this.innerHTML)">.</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="toast">
+      <span id="toastText">Toast Example</span>
+    </section>
+    
+    <div id="data" hidden></div>
+    
+  </app>
+  <script src="./assets/tools/pcr/pickr.es5.min.js"></script>
+  <script src="./assets/plugins/ace/ace.js"></script>
+  <script src="./assets/plugins/ace/ext-language_tools.js"></script>
+  <script src="./assets/plugins/tidy/beautify.js"></script>
+  <script src="./assets/plugins/tidy/beautify-css.js"></script>
+  <script src="./assets/plugins/tidy/beautify-html.js"></script>
+  <script src="./assets/js/core.js"></script>
+</body>
+</html>

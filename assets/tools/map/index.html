@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+      html,body{
+        margin:0;
+        width:100%;
+        height:100%;
+        display:flex;
+        background-image:radial-gradient(at center,#0cf,#05f);
+        align-items:center;
+        box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
+        justify-content:center;
+      }
+      .app{
+        width:35%;
+        min-width:320px;
+        min-height:500px;
+        background:rgba(0,0,0,0.3);
+        border-radius:10px;
+        box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset,
+        0 0 25px 5px rgba(0,0,0,0.3);
+        color:#fff;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+      center section{
+        padding:5px 20px !important;
+      }
+      iframe{
+        background:#fff;
+        border:0;
+        width:100%;
+      }
+      button{
+  background-color:#ff5000;
+  border:1px solid #fff;
+  color:#fff;
+  text-align:center;
+  font-size:1em;
+  height:40px;
+  width:80px;
+  border-radius:10px;
+  border:0;
+  box-shadow:0 0 10px 2px rgba(0,0,0,0.3);
+  outline:0;
+  padding:2.5px 5px;
+}
+button:active{
+  box-shadow:0 0 0 3px rgba(255,255,255,0.3);
+}
+#place, textarea{
+  width:auto;
+  height:40px;
+  margin:5px 0;
+  border-radius:10px;
+  border:0;
+  box-shadow:0 0 10px 2px rgba(0,0,0,0.3);
+  outline:0;
+  padding:2.5px 5px;
+}
+input:focus,textarea:focus{
+  box-shadow:0 0 0 3px rgba(255,255,255,0.3);
+}
+textarea{height:70px;width:calc(100% - 10px);}
+#place, .apply{
+  display:inline-block !important;
+}
+    </style>
+  </head>
+  <body>
+      <center class="app">
+        <section><hr>
+          <span>Zooming: </span>
+          <input type="range" id="zoom" onchange="zoomVal(this);" ontouchmove="zoomVal(this);" onmousemove="zoomVal(this);" value="5" min="1" max="16">
+          <span id="zoomValue">5x</span>
+          <hr>
+          <label><input type="checkbox" checked id="mode">Satellite Mode</label><hr>
+          <input id="place" placeholder="Location" value="EGYPT">
+          <button class="apply" onclick="applyD()">apply</button>
+          <hr>
+          <textarea id="link" placeholder="code"></textarea>
+          <hr>
+        <iframe id="mapo" src="data:text/html,<!DOCTYPE html>complete The Form and click apply"></iframe>
+          <hr>
+        </section>
+      </center>
+    <script>
+      //https://maps.google.com/maps?q=Egypt&t=k&z=16&ie=UTF8&iwloc=&output=embed
+      function zoomVal(val){
+        window.zoomValue.innerHTML=val.value+"x";
+      }
+      function applyD() {
+        if(window.mode.checked==true){var mode="&t=k"} else{var mode="&t=a"}
+        var apply=window.mapo.src="https://maps.google.com/maps?q="
+        +window.place.value+mode
+        +"&z="+window.zoom.value+"&ie=UTF8&iwloc=&output=embed";
+        var apply2=window.link.value="<iframe class=\"map\" src=\""+apply+"\"></iframe>";
+      }
+    </script>
+  </body>
+</html>

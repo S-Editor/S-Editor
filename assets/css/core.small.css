@@ -1,0 +1,58 @@
+.head, .contents {
+  display: block;
+  height: calc(100% - 110px);
+  box-shadow: 0 0 4px 1px #bbb;
+  width: calc(100vw - 20px);
+  margin: 10px 10px 10px 10px;
+  border-radius: 10px;
+  float: left;
+}
+.head {
+  height: 70px;
+  margin-bottom: 0;
+  overflow:hidden;
+  overflow-x:auto !important;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.head ,.tab-scrool{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+@media (max-width:500px){
+.head ,.tab-scrool{
+  justify-content:start;
+}
+}
+.head hr {
+  display:none;
+}
+.head .html, .head .css{}
+.head .html img, .head .css img{
+  zoom:1.2;
+  margin:5px 0 -5px 0;
+}
+.head .tab{
+  display:inline-block;
+  width:48px;
+  height:48px;
+  margin:4px;
+  line-height:78px;
+}
+.head .tab .tab-text{
+  display:none
+}
+
+
+#full{display:none;}
+
+.settings{
+  position:relative;
+  left:0;
+  bottom:0;
+}
+.small-logo{display:inline-block !important;}
+.big-logo{display:none !important;}

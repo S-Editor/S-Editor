@@ -1,0 +1,16 @@
+{
+  "name": "Smart Editor Beta",
+  "short_name": "Smart Editor Beta",
+  "version": "22.03.20",
+  "description": "HTML, CSS, JS, Markdown editor & Web tools for developers.",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "192": "logo.png"
+    }
+  },
+  "icons": {
+    "192": "logo.png"
+  }
+}

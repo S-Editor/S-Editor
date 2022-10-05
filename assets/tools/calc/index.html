@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>calculator</title>
+        <style>
+        :root{
+          --theme: #fff;
+        }
+body,html {
+    background: var(--theme);
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    display:flex;
+    align-items:center;
+    box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
+    justify-content: center;
+  }
+  .container {
+    max-width: 315px;
+    background: var(--theme);
+    padding:50px 40px 30px 30px;
+    border-radius:20px;
+    box-shadow:
+    0 0 15px 3px rgba(0,0,0,0.3);
+    font-weight:bold;
+    font-family: Sans-Serif;
+  }
+  @media (max-width:800px){
+    .container{
+      zoom:0.8;
+    }
+  }
+  .display {
+    width: calc(100% - 15px);
+    height: 30px;
+    line-height: 30px;
+    color: #09f;
+    font-size: 30px;
+    background: var(--theme);
+    border-radius: 10px;
+    border:0;
+    margin:20px 0;
+    border:2px solid #09f;
+    padding:10px;
+  }
+  .keyboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 50px);
+    grid-gap: 1rem;
+    margin: auto;
+  }
+  .keyboard .key {
+    width: 66px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 50px;
+    color: #09f;
+    background: var(--theme);
+    cursor: pointer;
+    font-size:25px;
+    border:2px solid #09f;
+    box-shadow: 0 0 5px 1px #00000033;
+    }
+    .keyboard .key:active{
+      background: #09f;
+      color:#fff;
+    }
+  .keyboard .key.special {
+    background-color: #f39c12;
+  }
+  .keyboard .key.zero {
+    grid-column: 1 / 3;
+    border-radius: 10px;
+    width:150px;
+  }
+        </style>
+    </head>
+        <body>
+            <center class="container">
+             <input id="output" disabled class="display">
+             <div class="keyboard">
+                <div onclick="window.output.value+=this.innerHTML" class="key">(</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">)</div>
+                <div onclick="del()" class="key special">DEL</div>
+                <div onclick="window.output.value=''" class="key special">AC</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">7</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">8</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">9</div>
+                <div onclick="window.output.value+='÷'" class="key special">÷</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">4</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">5</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">6</div>
+                <div onclick="window.output.value+='×'" class="key special">×</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">1</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">2</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">3</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key special">-</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">0</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key">.</div>
+                <div onclick="equal()" class="key special">=</div>
+                <div onclick="window.output.value+=this.innerHTML" class="key special">+</div>
+             </div>
+            </center>
+            <script>
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              document.querySelector(':root').style.setProperty('--theme', '#444');
+            } else {
+              document.querySelector(':root').style.setProperty('--theme', '#fff');
+            }
+              var exp=window.output;
+              function equal() {
+              exp.value=exp.value.replace("×","*");
+              exp.value=exp.value.replace("÷","/");
+              console.log({
+                "Sum" : exp.value,
+                "Result" : eval(exp.value)
+              });
+              exp.value=eval(exp.value)
+            }
+              function del() {
+	               exp.value=exp.value.substring(0,exp.value.length-1);
+              }
+            </script>
+        </body>
+</html>

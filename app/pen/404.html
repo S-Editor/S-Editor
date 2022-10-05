@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Loading The Preview</title>
+  </head>
+  <body>
+    <script>
+      var lo=location;
+      var link=lo.href;
+      var id=link.slice(link.indexOf("run/")+4,link.length);
+      fetch("https://json.extendsclass.com/bin/"+id)
+      .then(response => response.json())
+      .then(data => {
+        var db=window.localStorage;
+        db.setItem("sdData":data)
+      });
+      var role= new URL(location.href).searchParams.get("role");
+      if(role==""){
+        
+      } else{
+        link=lo.protocol+"//"+lo.host+"/app/run";
+      }
+      
+      
+    </script>
+  </body>
+</html>

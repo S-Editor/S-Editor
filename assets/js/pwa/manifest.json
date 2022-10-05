@@ -1,0 +1,23 @@
+{
+  "name": "TDIM Editor Beta",
+  "short_name": "TDIM Editor Beta",
+  "start_url": "../../../index.html",
+  "scope": "../../../",
+  "display": "standalone",
+  "background-color": "#fff",
+  "splash_pages": false,
+  "orientation":"any",
+  "description": "HTML, CSS, JS, Markdown editor and free seo tools for web developers.",
+  "icons": [
+    {
+      "src": "/assets/images/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/images/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

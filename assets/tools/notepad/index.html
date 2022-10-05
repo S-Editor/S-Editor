@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>NoteSat</title>
+  <link rel="stylesheet" href="style.css">
+  <!--script src="https://kit.fontawesome.com/2f1adcc51f.js"></script -->
+</head>
+
+<body>
+  <div class="container">
+    <h2>Notepad</h2>
+    <hr>
+    <select id="te">
+      <option value="false">Select Note</option>
+    </select>
+    <br>
+    <input id="ghk" placeholder="Note Name">
+    <br>
+    <input id="ta1" placeholder="Note Content">
+    <br>
+    <input id="ta2" placeholder="Note Content">
+    <br>
+    <input id="ta3" placeholder="Note Content">
+    <br>
+    <input id="ta4" placeholder="Note Content">
+    <br>
+    <button onclick="penManager('restore')"><i class="fa fa-eye"> </i>Show</button>
+    <button onclick="penManager('remove')"><i class="fa fa-trash"> </i>Delete</button>
+    <button onclick="penManager('save')"><i class="fa fa-save"> </i>Save</button>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>

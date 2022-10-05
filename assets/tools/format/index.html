@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <center class="container">
+      <div id="">
+        <label onclick="chLang('html')"><input type="radio" checked name="lang">HTML</label>
+        <label onclick="chLang('css')"><input type="radio" name="lang">CSS</label>
+        <label onclick="chLang('javascript')"><input type="radio" name="lang">JavaScript</label>
+      </div>
+      <div id="editor"></div>
+      <button onclick="tidy()">Format</button>
+    </center>
+    <script src="/assets/plugins/ace/ace.js"></script>
+    <script src="/assets/plugins/tidy/beautify.js"></script>
+    <script src="/assets/plugins/tidy/beautify-css.js"></script>
+    <script src="/assets/plugins/tidy/beautify-html.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

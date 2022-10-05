@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <div id="tabs">
+      <center>
+      <div class="tab" onclick="getMe('.picker');"><span>Color Picker</span></div>
+      <div class="tab" onclick="getMe('.gradient');"><span>Gradient Generator</span></div>
+      <div class="tab" onclick="getMe('.calc');"><span>Sample Calculator</span></div>
+      <div class="tab" onclick="getMe('.file64');"><span>File to Base64</span></div>
+      <div class="tab" onclick="getMe('.text64');"><span>Text to Base64</span></div>
+      <div class="tab" onclick="getMe('.map');"><span>Map Creator</span></div>
+      <div class="tab" onclick="getMe('.formater');"><span>Code Formater</span></div>
+      <div class="tab" onclick="getMe('.ipfs');"><span>File Upload</span></div>
+      <div class="tab none"><br><br></div>
+      </center>
+    </div>
+    <div id="contents">
+      <div class="content picker"><iframe src="./pcr/index.html"></iframe></div>
+      <div class="content gradient"><iframe src="./gradient/index.html"></iframe></div>
+      <div class="content calc"><iframe src="./calc/index.html"></iframe></div>
+      <div class="content file64"><iframe src="./file64/index.html"></iframe></div>
+      <div class="content text64"><iframe src="./text64/index.html"></iframe></div>
+      <div class="content map"><iframe src="./map/index.html"></iframe></div>
+      <div class="content formater"><iframe src="./format/index.html"></iframe></div>
+      <div class="content ipfs"><iframe src="./ipfs/index.html"></iframe></div>
+      <span class="close" onclick="closeMe()">×</span>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

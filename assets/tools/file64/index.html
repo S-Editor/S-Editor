@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File to Base64</title>
+<style>
+:root{
+  --theme: #fff;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/assets/css/fonts/Cairo.ttf");
+}
+html,body{
+  margin:0;
+  height:100%;
+  width:100%;
+  color:#09f;
+  box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
+  background:var(--theme);
+  font-family: "Cairo";
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+  #img,#code{display:none}
+  .box{
+    background:var(--theme);
+    min-width:300px;
+    max-width:80vw !important;
+    min-height: 400px;
+    text-align:left;
+    padding:10px;
+    border:0;
+    border-radius:10px;
+    box-shadow:
+    0 0 15px 3px #00000033;
+  }
+  .box textarea{
+    width:100%;
+  }
+  .box img,.box textarea{
+    width:250px;
+    height:250px;
+    background:#fff;
+    color:#05f;
+  }
+  .box #data{
+    overflow:auto;
+    width:auto;
+  }
+</style>
+</head>
+<body>
+    <div class="box">
+<input type="file" id="file-uploader"><hr>
+<center>
+<textarea id="code" disabled></textarea>
+  <img id="img">
+</center>
+<hr>
+<table id="data"></table>
+</div>
+<script>
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              document.querySelector(':root').style.setProperty('--theme', '#444');
+            } else {
+              document.querySelector(':root').style.setProperty('--theme', '#fff');
+            }
+  const fileUploader = document.getElementById('file-uploader');
+  const reader = new FileReader();
+fileUploader.addEventListener('change', (event) => {
+  const files = event.target.files;
+  const file = files[0];
+  reader.readAsDataURL(file);
+  reader.addEventListener('load', (event) => {
+    var base=event.target.result;
+    var kind =base.slice(base.indexOf("data:")+5, base.indexOf("/"));
+    if(kind=="text"){
+    window.img.style.display="none";
+    const code = window.code;
+    code.style.display="block";
+    code.value = atob(base.slice(base.indexOf("base64,")+7, base.length));
+    }else if(kind=="image"){
+      const code = window.code.style.display="none";
+      window.img.style.display="block";
+      window.img.src=base;
+    }else{
+      window.img.style.display="none";
+      window.code.style.display="none";
+    }
+    const data = document.getElementById('data');
+    for (const file of files) {
+  const name=file.name;
+  const type = file.type ? file.type: 'NA';
+  const size = (file.size/1000).toFixed(2)+" Kb";
+  const path=base;
+  console.log({name, type, size, path});
+  data.innerHTML="<tr><td>Name : </td><td>"+name
+  +"</td></tr><tr><td>Size : </td><td>"+size
+  +"</td></tr><tr><td>Base64 : </td><td><input value='"+path+"'></td></tr>";
+  }
+});
+});
+</script>
+</body>
+</html>

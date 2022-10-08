@@ -2,19 +2,13 @@
   box-sizing: border-box;
 }
 :root {
-  --theme: #fff;
-}
-@font-face {
-  font-family: "Cairo";
-  src: url("/assets/css/fonts/Cairo.ttf");
+  --theme: #444;
 }
 html, body {
   margin: 0;
   height: 100%;
   width: 100%;
-  box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
-  background: var(--theme);
-  font-family: "Cairo" !important;
+  background:radial-gradient(circle at center,#afa4d4,#3e7cec);
   display: flex;
   align-items: center;
   justify-content: center;

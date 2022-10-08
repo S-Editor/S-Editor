@@ -1,9 +1,3 @@
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.querySelector(':root').style.setProperty('--theme', '#444');
-} else {
-  document.querySelector(':root').style.setProperty('--theme', '#fff');
-}
-
 var editor = ace.edit("editor");
 editor.session.setMode("ace/mode/html");
 editor.setTheme("ace/theme/monokai");

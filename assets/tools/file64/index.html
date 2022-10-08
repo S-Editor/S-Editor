@@ -4,7 +4,7 @@
   <title>File to Base64</title>
 <style>
 :root{
-  --theme: #fff;
+  --theme: #444;
 }
 @font-face {
   font-family: "Cairo";
@@ -15,8 +15,7 @@ html,body{
   height:100%;
   width:100%;
   color:#09f;
-  box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
-  background:var(--theme);
+  background:radial-gradient(circle at center,#afa4d4,#3e7cec);
   font-family: "Cairo";
   display:flex;
   align-items:center;
@@ -61,11 +60,6 @@ html,body{
 <table id="data"></table>
 </div>
 <script>
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              document.querySelector(':root').style.setProperty('--theme', '#444');
-            } else {
-              document.querySelector(':root').style.setProperty('--theme', '#fff');
-            }
   const fileUploader = document.getElementById('file-uploader');
   const reader = new FileReader();
 fileUploader.addEventListener('change', (event) => {

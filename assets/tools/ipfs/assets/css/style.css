@@ -9,7 +9,7 @@ html,body{
   align-items:center;
   height:100%;
   font-family:Sans-Serif;
-  background:linear-gradient(#0ff,#05f);
+  background:radial-gradient(circle at center,#afa4d4,#3e7cec);
 }
 form{
   display:flex;
@@ -18,8 +18,7 @@ form{
   width:20rem;
   border-radius:10px;
   box-shadow:0 0 15px 3px #00000033;
-  background:#fff;
-  border:1px solid #ddd;
+  background:#444;
   padding: 1rem 2px;
 }
 h2{color:#09f}
@@ -27,7 +26,7 @@ center *{
   margin:10px 20px
 }
 input{
-  background:#fff;
+  background:#444;
   padding:15px 10px;
   color:#09f;
   font-size:15px;
@@ -40,7 +39,7 @@ input{
 }
 [type="submit"]:active{
   background:#09f;
-  color:#fff;
+  color:#444;
 }
 #output{
   text-align: left;
@@ -49,6 +48,7 @@ input{
   box-shadow:0 0 5px 1px #00000033;
   border-radius:10px;
   padding:0.5rem;
+  color: #fff;
 }
 #output *{
   margin:0.25rem 0.5rem;

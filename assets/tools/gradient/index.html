@@ -5,7 +5,7 @@
     <title></title>
     <style>
     :root{
-      --theme: #444;
+      --theme: #fff;
     }
 body,html{
   height:100%;
@@ -14,8 +14,9 @@ body,html{
   overflow:hidden;
   display:flex;
   align-items:center;
-    justify-content:center;
-  background:radial-gradient(circle at center,#afa4d4,#3e7cec);
+  box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
+  justify-content:center;
+  background: var(--theme);
 }
 #gradient{
   min-height:350px;
@@ -91,6 +92,11 @@ color:#fff;
       </div>
       </div>
     <script>
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.querySelector(':root').style.setProperty('--theme', '#444');
+} else {
+  document.querySelector(':root').style.setProperty('--theme', '#fff');
+}
 function copy(input){
   input.select();
   document.execCommand('copy');

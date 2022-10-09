@@ -5,16 +5,17 @@
         <title>calculator</title>
         <style>
         :root{
-          --theme: #444;
+          --theme: #fff;
         }
-    body,html {
-    background: radial-gradient(circle at center,#afa4d4,#3e7cec);
+body,html {
+    background: var(--theme);
     margin:0;
     width:100%;
     height:100%;
     overflow:auto;
     display:flex;
     align-items:center;
+    box-shadow:0 0 15px 3px rgba(0,0,0,0.3) inset;
     justify-content: center;
   }
   .container {
@@ -106,6 +107,11 @@
              </div>
             </center>
             <script>
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              document.querySelector(':root').style.setProperty('--theme', '#444');
+            } else {
+              document.querySelector(':root').style.setProperty('--theme', '#fff');
+            }
               var exp=window.output;
               function equal() {
               exp.value=exp.value.replace("×","*");
